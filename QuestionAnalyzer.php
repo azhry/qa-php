@@ -106,7 +106,9 @@ class QuestionAnalyzer
 	public function getKeywords($query)
 	{
 		$words = $this->preprocessor->casefold($query);
+		$words = $this->preprocessor->stem($words);
 		$words = $this->preprocessor->tokenize($words);
+		$words = $this->preprocessor->stopword_removal($words);
 		$keywords = array_diff($words, $this->questionWords);
 		return $keywords;
 	}

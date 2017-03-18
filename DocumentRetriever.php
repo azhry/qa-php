@@ -28,6 +28,7 @@ class DocumentRetriever
 	{
 		$listdir = scandir($this->directory);
 		$listdir = array_diff($listdir, ['.', '..']);
+		echo "indexing....\n";
 		foreach ($listdir as $dir)
 		{
 			$txt = file_get_contents($this->directory . "/" . $dir);
@@ -69,6 +70,7 @@ class DocumentRetriever
 		$this->termWeight();
 
 		$similarityList = [];
+		echo "retrieving documents........\n";
 		foreach ($this->index as $id => $content)
 		{
 			$dotProducts = 0;
